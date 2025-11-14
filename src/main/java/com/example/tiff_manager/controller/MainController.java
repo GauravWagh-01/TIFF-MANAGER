@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.List;
@@ -104,6 +105,7 @@ public class MainController {
         }
     }
 
+
     @FXML
     private void handleDeleteFile() {
         TiffFile selected = fileListView.getSelectionModel().getSelectedItem();
@@ -135,6 +137,9 @@ public class MainController {
     @FXML
     private void handleExit() {
         Platform.exit();
+    }
+    public void handleAbout(javafx.event.ActionEvent actionEvent) {
+        System.out.println("About menu clicked!");
     }
 
     @FXML
@@ -289,4 +294,5 @@ public class MainController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
 }

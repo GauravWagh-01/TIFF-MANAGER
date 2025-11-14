@@ -69,13 +69,31 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
+            <version>23.0.1</version>
+            <classifier>linux</classifier>
         </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>23.0.1</version>
+            <classifier>linux</classifier>
+        </dependency>
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>${javafx.version}</version>
+            <version>23.0.1</version>
+            <classifier>linux</classifier>
         </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>23.0.1</version>
+            <classifier>linux</classifier>
+        </dependency>
+
 
         <!-- TwelveMonkeys ImageIO for TIFF -->
         <dependency>
@@ -132,7 +150,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>com.example.tiff_manager.TiffManagerApplication</mainClass>
+                    <mainClass>com.example.tiffmanager.MainApp</mainClass>
                     <options>
                         <option>--enable-preview</option>
                     </options>

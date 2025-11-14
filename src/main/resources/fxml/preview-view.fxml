@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="com.example.tiff_manager.controller.PreviewController"
+            prefHeight="600.0" prefWidth="800.0">
 
-</AnchorPane>
+    <!-- Top - Info Bar -->
+    <top>
+        <VBox>
+            <HBox alignment="CENTER_LEFT" spacing="10"
+                  style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 0 0 1 0;">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Label fx:id="infoLabel" text="Image Preview" style="-fx-font-size: 14px;"/>
+            </HBox>
+
+            <ToolBar>
+                <Button text="Close" onAction="#handleClose"/>
+            </ToolBar>
+        </VBox>
+    </top>
+
+    <!-- Center - Image Display -->
+    <center>
+        <ScrollPane fx:id="scrollPane" fitToWidth="true" fitToHeight="true"
+                    style="-fx-background-color: #2b2b2b;">
+            <VBox alignment="CENTER" style="-fx-background-color: #2b2b2b;">
+                <ImageView fx:id="imageView" preserveRatio="true" smooth="true"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

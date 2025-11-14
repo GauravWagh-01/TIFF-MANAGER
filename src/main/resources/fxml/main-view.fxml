@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="com.example.tiff_manager.controller.MainController"
+            prefHeight="700.0" prefWidth="1000.0">
 
-</AnchorPane>
+    <!-- Menu Bar -->
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="Open TIFF..." onAction="#handleOpenFile" accelerator="Ctrl+O"/>
+                    <MenuItem text="Convert to PNG..." onAction="#handleConvertToPng" accelerator="Ctrl+P"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Delete Selected" onAction="#handleDeleteFile" accelerator="Delete"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Exit" onAction="#handleExit" accelerator="Ctrl+Q"/>
+                </Menu>
+                <Menu text="View">
+                    <MenuItem text="Preview Selected" onAction="#handlePreviewFile" accelerator="Ctrl+R"/>
+                    <MenuItem text="Open in New Window" onAction="#handleOpenInNewWindow" accelerator="Ctrl+N"/>
+                </Menu>
+                <Menu text="Help">
+                    <MenuItem text="About" onAction="#handleAbout"/>
+                </Menu>
+            </MenuBar>
+
+            <!-- Toolbar -->
+            <ToolBar>
+                <Button fx:id="openButton" text="Open File" onAction="#handleOpenFile"/>
+                <Separator orientation="VERTICAL"/>
+                <Button fx:id="previewButton" text="Preview" onAction="#handlePreviewFile" disable="true"/>
+                <Button fx:id="deleteButton" text="Delete" onAction="#handleDeleteFile" disable="true"/>
+                <Separator orientation="VERTICAL"/>
+                <Button text="Convert to PNG" onAction="#handleConvertToPng"/>
+            </ToolBar>
+        </VBox>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <SplitPane dividerPositions="0.3" VBox.vgrow="ALWAYS">
+            <!-- Left Panel - File List -->
+            <VBox spacing="5">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+
+                <Label text="Imported TIFF Files:" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+                <ListView fx:id="fileListView" VBox.vgrow="ALWAYS"/>
+
+                <Label text="Metadata:" style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+                <TextArea fx:id="metadataTextArea" prefRowCount="8" editable="false"
+                          wrapText="true" style="-fx-font-family: monospace;"/>
+            </VBox>
+
+            <!-- Right Panel - Preview Area -->
+            <VBox spacing="10" alignment="CENTER">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+
+                <Label text="Preview:" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+                <ScrollPane fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS">
+                    <ImageView fx:id="previewImageView" preserveRatio="true" smooth="true"/>
+                </ScrollPane>
+            </VBox>
+        </SplitPane>
+    </center>
+
+    <!-- Status Bar -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="10"
+              style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-width: 1 0 0 0;">
+            <padding>
+                <Insets top="5" right="10" bottom="5" left="10"/>
+            </padding>
+            <Label text="Status:"/>
+            <Label fx:id="statusLabel" text="Ready" HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
